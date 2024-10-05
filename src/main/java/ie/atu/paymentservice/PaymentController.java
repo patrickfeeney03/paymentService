@@ -21,7 +21,6 @@ public class PaymentController {
 
     @PostMapping("/process-payment")
     public ResponseEntity<String> processPayment(@Valid @RequestBody CardDetails cardDetails) {
-        System.out.println("Successful transaction with ID: " + UUID.randomUUID()); // Mock transaction
         if (!paymentService.validateCardDetails(cardDetails)) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid card details");
         }
